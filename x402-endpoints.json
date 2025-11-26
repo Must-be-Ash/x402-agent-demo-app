@@ -1,0 +1,162 @@
+{
+    "wallet": {
+      "provider": "cdp-embedded",
+      "network": "base",
+      "privateKey": "${PRIVATE_KEY}"
+    },
+    "endpoints": [
+        {
+        "id": "genbase_video",
+        "name": "Generate Video",
+        "url": "https://www.genbase.fun/api/video/create-sora2",
+        "method": "POST",
+        "description": "Generate a video using AI from a text prompt. Returns a task ID that can be polled for completion. The AI will create a video based on your description.",
+        "category": "media",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "prompt": {
+              "type": "string",
+              "description": "Text description of the video to generate"
+            },
+            "duration": {
+              "type": "string",
+              "description": "Video duration in seconds",
+              "enum": ["10", "15"]
+            }
+          },
+          "required": ["prompt"]
+        },
+        "estimatedCost": "$0.20",
+        "trusted": true
+      },
+      {
+        "id": "minifetch_extract_metadata",
+        "name": "Extract URL Metadata",
+        "url": "https://minifetch.com/api/v1/x402/extract/url-metadata",
+        "method": "GET",
+        "description": "Fetch and extract HTML metadata from a specified URL. Returns all HTML meta tags, Open Graph tags, Twitter tags, headings, image tags, and response headers. Set includeResponseBody=true to return entire response body as a string. Useful for SEO and AI research projects.",
+        "category": "web-scraping",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "The URL from which to extract HTML metadata"
+            },
+            "includeResponseBody": {
+              "type": "string",
+              "description": "If set to 'true', includes the full HTML response body as a string in the result"
+            }
+          },
+          "required": ["url"]
+        },
+        "estimatedCost": "$0.01",
+        "trusted": true
+      },
+      {
+        "id": "polymarket_events",
+        "name": "List Polymarket Events",
+        "url": "https://polymarketeer.vercel.app/api/x402/polymarket/events",
+        "method": "GET",
+        "description": "List Polymarket prediction market events with filtering by status, category, and volume. Supports pagination with limit and offset. Returns market data including current odds and volume.",
+        "category": "prediction-markets",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "closed": {
+              "type": "string",
+              "description": "Filter for closed events"
+            },
+            "active": {
+              "type": "string",
+              "description": "Filter for active events"
+            },
+            "limit": {
+              "type": "integer",
+              "description": "Maximum number of results to return"
+            },
+            "order": {
+              "type": "string",
+              "description": "Sort order for results"
+            },
+            "ascending": {
+              "type": "string",
+              "description": "Sort direction (ascending or descending)"
+            },
+            "offset": {
+              "type": "integer",
+              "description": "Pagination offset"
+            },
+            "tag_id": {
+              "type": "string",
+              "description": "Filter by tag ID"
+            }
+          },
+          "required": []
+        },
+        "estimatedCost": "$0.01",
+        "trusted": true
+      },
+      {
+        "id": "chrombot_ping",
+        "name": "Chrombot Health Check",
+        "url": "https://chrombot-x402.vercel.app/ping",
+        "method": "GET",
+        "description": "Ping the server to check if it's alive. Simple health check to verify the Chrombot x402 server is online and responding. Returns a pong message.",
+        "category": "monitoring",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        },
+        "estimatedCost": "$0.01",
+        "trusted": true
+      },
+      {
+        "id": "qr_code_generator",
+        "name": "Generate QR Code",
+        "url": "https://xluihnzwcmxybtygewvy.supabase.co/functions/v1/url-qr-code-generator",
+        "method": "GET",
+        "description": "Generates a QR code image for any URL. Returns the QR code as a base64-encoded PNG data URL that can be directly embedded in HTML or downloaded. Useful for creating shareable QR codes.",
+        "category": "utilities",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "The URL to encode in the QR code"
+            }
+          },
+          "required": ["url"]
+        },
+        "estimatedCost": "$0.01",
+        "trusted": true
+      },
+      {
+        "id": "gifu_gif_search",
+        "name": "AI-Powered GIF Search",
+        "url": "https://gifu-server.onrender.com/api/x402/search/gif",
+        "method": "POST",
+        "description": "AI-powered GIF search with semantic ranking from multiple sources (Giphy, Tenor, and Klipy). Uses natural language understanding to find the most relevant GIFs for your query. Returns results array with GIF URLs and metadata.",
+        "category": "media",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Search query for finding GIFs (natural language supported)"
+            },
+            "max_results": {
+              "type": "number",
+              "description": "Maximum number of GIF results to return"
+            }
+          },
+          "required": ["query"]
+        },
+        "estimatedCost": "$0.05",
+        "trusted": true
+      }
+    ]
+  }
+  

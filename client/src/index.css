@@ -1,0 +1,132 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  
+  --font-heading: 'Architects Daughter', cursive;
+  --font-body: 'Patrick Hand', cursive;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius-sm: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  --radius-md: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  --radius-lg: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+:root {
+  /* Paper & Graphite Theme */
+  --background: hsl(40 25% 96%); /* Warm Paper */
+  --foreground: hsl(240 5% 15%); /* Graphite */
+
+  --card: hsl(40 25% 98%);
+  --card-foreground: hsl(240 5% 15%);
+
+  --popover: hsl(40 25% 98%);
+  --popover-foreground: hsl(240 5% 15%);
+
+  --primary: hsl(240 5% 15%); /* Graphite Black */
+  --primary-foreground: hsl(40 25% 96%); /* Paper White */
+
+  --secondary: hsl(40 15% 90%); /* Light Gray Paper */
+  --secondary-foreground: hsl(240 5% 15%);
+
+  --muted: hsl(40 10% 85%);
+  --muted-foreground: hsl(240 4% 46%);
+
+  --accent: hsl(50 100% 80%); /* Highlighter Yellow */
+  --accent-foreground: hsl(240 5% 15%);
+
+  --destructive: hsl(0 80% 70%); /* Red Marker */
+  --destructive-foreground: hsl(40 25% 96%);
+
+  --border: hsl(240 5% 15%); /* Graphite border */
+  --input: hsl(240 5% 15%);
+  --ring: hsl(240 5% 15%);
+
+  --radius: 0.5rem;
+}
+
+body {
+  @apply font-body bg-background text-foreground selection:bg-accent selection:text-accent-foreground;
+  background-image: radial-gradient(hsl(240 5% 80%) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Sketchy Utilities - Defined as classes, not utilities to apply */
+.sketchy-border {
+  border: 2px solid currentColor;
+  border-radius: 2px 255px 3px 25px / 255px 5px 225px 3px;
+  transition: all 0.2s ease;
+}
+
+.sketchy-border-sm {
+  border: 2px solid currentColor;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+.sketchy-shadow {
+  box-shadow: 4px 4px 0px 0px currentColor;
+}
+
+/* Components - using composition in CSS instead of @apply for custom classes */
+.sketchy-box {
+  border: 2px solid currentColor;
+  border-radius: 2px 255px 3px 25px / 255px 5px 225px 3px;
+  transition: all 0.2s ease;
+  box-shadow: 4px 4px 0px 0px currentColor;
+  @apply bg-card;
+}
+
+.sketchy-button {
+  border: 2px solid currentColor;
+  border-radius: 2px 255px 3px 25px / 255px 5px 225px 3px;
+  transition: all 0.2s ease;
+  box-shadow: 4px 4px 0px 0px currentColor;
+  @apply px-6 py-2 font-heading text-lg font-bold hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_currentColor] active:translate-y-0 active:shadow-[2px_2px_0px_0px_currentColor] transition-all cursor-pointer;
+}
+
+.sketchy-input {
+  border: 2px solid currentColor;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  @apply bg-transparent px-4 py-2 outline-none focus:ring-2 ring-offset-2 ring-primary/20;
+}
+
+/* Custom Scrollbar for that "notebook" feel */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--foreground) / 0.2);
+  border-radius: 10px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--foreground) / 0.4);
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
