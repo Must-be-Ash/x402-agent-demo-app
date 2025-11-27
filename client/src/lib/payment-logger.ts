@@ -49,7 +49,9 @@ export function logPaymentSettlement(
 
 /**
  * Extracts transaction hash from X-PAYMENT-RESPONSE header
- * Expected format: "tx_hash:0x..."
+ * Supports two formats:
+ * 1. Base64-encoded JSON: {"success":true,"transaction":"0x...","network":"base","payer":"0x..."}
+ * 2. Legacy format: "tx_hash:0x..."
  * @param paymentResponseHeader - Value from X-PAYMENT-RESPONSE header
  * @returns Transaction hash or null if not found
  */
@@ -60,7 +62,20 @@ export function extractTxHashFromPaymentResponse(
     return null;
   }
 
-  // Parse format: "tx_hash:0x..."
+  // Try parsing as base64-encoded JSON first (current x402 format)
+  try {
+    const decoded = atob(paymentResponseHeader);
+    const parsed = JSON.parse(decoded);
+
+    // Extract transaction hash from JSON response
+    if (parsed.transaction && typeof parsed.transaction === 'string') {
+      return parsed.transaction;
+    }
+  } catch (error) {
+    // Not base64 JSON, try legacy format
+  }
+
+  // Fall back to legacy "tx_hash:0x..." format
   const match = paymentResponseHeader.match(/tx_hash:([0-9a-fA-Fx]+)/);
   return match ? match[1] : null;
 }

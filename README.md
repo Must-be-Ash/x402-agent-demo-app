@@ -13,7 +13,7 @@ This is a demo and starter template showing how to connect any LLM to x402 payme
 Create a new x402 agent app with one command:
 
 ```bash
-npx x402-agent-app my-agent-app
+npx x402-agent-app
 ```
 
 This scaffolds a full-stack app with:

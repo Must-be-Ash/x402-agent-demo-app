@@ -43,10 +43,17 @@ export default async function handler(
 
     // Forward X-PAYMENT-RESPONSE header if present
     const paymentResponse = response.headers.get('x-payment-response');
+    console.log('Upstream payment response header:', paymentResponse);
     if (paymentResponse) {
       res.setHeader('X-PAYMENT-RESPONSE', paymentResponse);
       res.setHeader('Access-Control-Expose-Headers', 'X-PAYMENT-RESPONSE');
       console.log('Payment completed, tx hash:', paymentResponse);
+      console.log('Response headers set:', {
+        'X-PAYMENT-RESPONSE': paymentResponse,
+        'Access-Control-Expose-Headers': 'X-PAYMENT-RESPONSE'
+      });
+    } else {
+      console.log('No payment response header received from upstream');
     }
 
     // Return response (402 or success)

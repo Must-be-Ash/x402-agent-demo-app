@@ -6,6 +6,7 @@ import { SketchyButton, SketchyTextarea } from "@/components/ui/sketchy-ui";
 import { ArrowLeft, Send, User, Bot, Wallet, CheckCircle2, ExternalLink, Loader2 } from "lucide-react";
 import { Message, generateId } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { extractTxHashFromPaymentResponse } from "@/lib/payment-logger";
 import { AuthModal } from "@/components/auth/AuthModal";
 import { HeaderWallet } from "@/components/HeaderWallet";
 import { wrapFetchWithPayment } from 'x402-fetch';
@@ -209,7 +210,10 @@ export default function Chat() {
           }
 
           // Extract payment info from headers
-          const txHash = x402Response.headers.get('X-PAYMENT-RESPONSE');
+          const paymentResponseHeader = x402Response.headers.get('X-PAYMENT-RESPONSE');
+          console.log('Payment Response Header:', paymentResponseHeader);
+          const txHash = extractTxHashFromPaymentResponse(paymentResponseHeader);
+          console.log('Extracted TX Hash:', txHash);
 
           // Show payment confirmation if payment was made
           if (txHash) {
