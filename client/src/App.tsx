@@ -7,6 +7,7 @@ import CDPProvider from "@/components/providers/CDPProvider";
 import NotFound from "@/pages/not-found";
 import Landing from "@/pages/Landing";
 import Chat from "@/pages/Chat";
+import { Analytics } from "@vercel/analytics/react";
 
 function Router() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Router />
+          <Analytics />
         </TooltipProvider>
       </CDPProvider>
     </QueryClientProvider>
