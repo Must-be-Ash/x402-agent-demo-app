@@ -25,14 +25,7 @@ export interface X402Endpoint {
   trusted: boolean;
 }
 
-export interface WalletConfig {
-  provider: 'cdp-embedded';
-  network: 'base' | 'base-sepolia' | 'ethereum' | 'sepolia';
-  privateKey: string;
-}
-
 export interface X402Config {
-  wallet: WalletConfig;
   endpoints: X402Endpoint[];
 }
 
@@ -59,6 +52,12 @@ export function loadX402Config(): X402Config {
   });
 
   const config = JSON.parse(configContent) as X402Config;
+
+  // Validate structure
+  if (!config.endpoints || !Array.isArray(config.endpoints)) {
+    throw new Error('Invalid config: endpoints array is required');
+  }
+
   return config;
 }
 

@@ -30,7 +30,7 @@ export default function Landing() {
               onClick={handleCopyCommand}
               className="inline-flex items-center justify-center px-4 py-2 bg-gray-100 rounded-lg border-2 border-dashed border-gray-300 cursor-pointer hover:bg-gray-200 transition-colors"
             >
-              <span className="font-mono text-sm">$ npx x402-agent-app my-app</span>
+              <span className="font-mono text-sm">$ npx x402-agent-app</span>
             </button>
             {copied && (
               <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 font-heading font-bold text-sm text-green-600 rotate-[-5deg] whitespace-nowrap">
@@ -48,7 +48,7 @@ export default function Landing() {
           </h1>
 
           <p className="text-xl md:text-2xl font-body text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Build AI agents that pay for what they need. This demo shows how to connect any LLM to x402 endpoints—just update your <code className="bg-muted px-2 py-1 rounded text-lg">x402-endpoints.json</code> file.
+            All you gotta do is edit your <code className="bg-muted px-2 py-1 rounded text-lg">x402-endpoints.json</code> <br/> to set the x402 endpoints you want your LLM to use.
           </p>
 
           <div className="flex flex-col gap-4 justify-center items-center pt-4">

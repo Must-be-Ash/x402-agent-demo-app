@@ -1,10 +1,5 @@
 {
-    "wallet": {
-      "provider": "cdp-embedded",
-      "network": "base",
-      "privateKey": "${PRIVATE_KEY}"
-    },
-    "endpoints": [
+  "endpoints": [
         {
         "id": "genbase_video",
         "name": "Generate Video",

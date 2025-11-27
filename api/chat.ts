@@ -2,7 +2,6 @@ import { type VercelRequest, type VercelResponse } from '@vercel/node';
 import OpenAI from 'openai';
 import { validateAccessToken } from './lib/validate-token.js';
 import { loadX402Endpoints, endpointsToFunctions } from './lib/x402-config.js';
-import { executeX402Call } from './lib/x402-executor.js';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
