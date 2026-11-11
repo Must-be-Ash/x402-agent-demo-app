@@ -1,5 +1,7 @@
 # x402 Agent Boilerplate
 
+> **Outdated, not maintained.** This is an x402 v1 example. x402 v2 has since been released; we recommend updating to v2 ([migration guide](https://docs.x402.org/guides/migration-v1-to-v2)) and updating the Next.js and CDP packages.
+
 **Build AI Agents That Pay For What They Need**
 
 This is a demo and starter template showing how to connect any LLM to x402 payment endpoints. Build your own agent app by customizing the `x402-endpoints.json` file.
